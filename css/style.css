@@ -1,0 +1,57 @@
+
+body{
+	background-color:#F8F8F8;
+	
+}
+p{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 40px;
+	color:#FF6347;
+}
+.btngroup{
+	margin-top: 15px;
+}
+.backgrondpc{
+	position:absolute;
+	top:-10px;
+	
+	z-index: -200;
+	
+}
+
+.headtext{
+	position: absolute;
+	top: 20px;
+	margin-left: 150px;
+}
+
+.button1,.button2, .button3, .button4{
+	position: fixed;
+    top: 800px;
+
+}s
+#effect{margin-top:100px;
+	margin-left: 200px;
+position: absolute;
+z-index: 100;}
+
+@media only screen and (max-width: 500px){
+	
+body{background-color:#F8F8F8;}
+.button1,.button2, .button3, .button4{
+	position: absolute;
+    margin-top: -550px;
+}
+p{font-size: 5px;margin-top: -5px;}
+.headtext{
+	position: absolute;
+	
+	margin-left: 80px;
+}
+/*#effect{
+position: absolute;
+margin-top:0px;
+
+z-index: 2
+}*/
+}

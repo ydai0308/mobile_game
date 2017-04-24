@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8">
+	<title>mobile game</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+	<script src="js/index.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"> </script>
+	<script 
+  src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"
+  integrity="sha256-tp8VZ4Y9dg702r7D6ynzSavKSwB9zjariSZ4Snurvmw="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+
+	       	    <div class="headtext"> 
+	  	   	          <p>How mang icecream are on the frames?</p>
+	  	        </div> 
+        </div>      
+    </div>           
+</div>
+<!-- ////////////////////////////////////////// -->
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+      <div class="backgrondpc">
+      	   <img src="img/b1.png" width="100%" >
+      </div>
+      </div>
+    </div>  
+</div>
+
+  <!--  ///////////////////////right & wrong kids//////////////////////////    -->
+  <div class="container" id="con_correct">
+  <div class="toggler">
+    <div id="effect" class="ui-corner-bl">
+       <img class="ui-corner-bl" src="img/1-1.png" width="500px;">
+    </div>
+  </div>
+</div>
+<!--   <section name="effect" id="effectTypes">
+    <option value="drop">drop</option>
+  </section> -->
+<!-- <div class="leftkid">
+      	   <img src="img/1-1.png" style="float: left; margin-top: -500px;" width="500px">
+      </div>
+
+
+
+<div class="rightkid">
+      	   <img src="img/1-2.png" style="float: right; margin-top: -500px" width="500px">
+      </div>
+ -->
+<!-- ///////////////////////////// -->
+     <br>
+ <div class="container">    
+      <div class="row buttongroup">
+
+      	 <div class="col-md-3 col-xs-3">
+      	      <div class="button1">
+      	      	<button type="button" class="btn btn-primary btn-lg btn-block">15</button>
+      	      </div>
+      	 </div>     
+
+      	
+      	  <div class="col-md-3 col-xs-3">
+      	  <div class="button2">
+      	         <button type="button" class="btn btn-primary btn-lg btn-block">10</button>
+      	      </div>     
+      	 </div>
+
+
+      	  <div class="col-md-3 col-xs-3">
+      	  <div class="button3">
+      	  <button id="btn13" type="button" class="btn btn-primary btn-lg btn-block">13</button>
+      	  </div>
+      	  </div>
+      	      	
+      	  
+      	
+      	  <div class="col-md-3 col-xs-3">
+      	      <div class="button4">
+      	      	<button type="button" class="btn btn-primary btn-lg btn-block">12</button>
+      	      </div>
+      	 </div>
+      </div>
+</div>      
+     <br>
+
+
+  <!--  ///////////////////////right & wrong kids//////////////////////////    -->
+  
+
+   
+</body>
+<!-- ///////////////////////////////////////////////js///////////////////////////////////// -->
+
+<script >
+
+  $( function() {
+    // run the currently selected effect
+    function runEffect() {
+      // get effect type from
+      //var selectedEffect = $( "#effectTypes" ).val();
+      var selectedEffect = "drop";
+ 
+      // Most effect types need no options passed by default
+      var options = {};
+      // some effects have required parameters
+      if ( selectedEffect === "scale" ) {
+        options = { percent: 50 };
+      } else if ( selectedEffect === "size" ) {
+        options = { to: { width: 280, height: 185 } };
+      }
+ 
+      // Run the effect
+      $( "#effect" ).show( selectedEffect, options, 500, callback );
+    };
+ 
+    //callback function to bring a hidden box back
+    function callback() {
+      setTimeout(function() {
+        $( "#effect:visible" ).removeAttr( "style" ).fadeOut();
+      }, 1000 );
+    };
+ 
+    // Set effect from select menu value
+    $( "#btn13" ).on( "click", function() {
+      runEffect();
+    });
+ 
+    $( "#effect" ).hide();
+  } );
+
+</script>
+
+
+
+
+
+</html>
