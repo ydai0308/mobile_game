@@ -1,255 +1,86 @@
-<!DOCTYPE html>
+<!DOCTYPE html>                                                                                                                                                                   
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta charset="utf-8">
-	<title>mobile game</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/page2.css">
-	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
-	<script src="js/index.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"> </script>
-	<script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
+  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Include jQuery Mobile stylesheets -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <!-- Include the jQuery library -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Include the jQuery Mobile library -->
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script></script>
+
+<script> 
+$(document).ready(function(){
+    var ds = ["#d1", "#d2", "#d3"];
+    var top1 = $("#board").position().top;
+    var left1 = $("#board").position().left;
+    $.each(ds, function( index, value ) {
+        $(ds[index]).css({ top: top1, left:-100  });
+    });
+
+    var i = 0;
+    $("button").click(function(){
+        $(ds[i]).fadeOut('fast').animate({
+            'left': '100%'
+            }, {duration: 'slow', queue: false}, function() {
+            // Animation complete.
+        });
+        $(ds[i+1]).show().animate({ left:left1 }, 
+                                  {duration: 800, easing: 'easeOutBounce'});
+        i++;
+    });
+
+    $(document).on("scrollstop",function(){
+        var top2 = $("#board").position().top;
+        alert("Stopped scrolling!" + top2);
+        $.each(ds, function( index, value ) {
+            $(ds[index]).css({ top: top2, left:-100  });
+        });
+
+    });
+});
+</script> 
+
 </head>
 <body>
 
-<div class="container">
-  <div id="con_correct">
-    <div class="toggler">
-       <div id="effect" class="ui-corner-bl">
-          <img class="ui-corner-bl" src="img/1-1.png" width="500px;">
-        </div>
-     </div>
+<div data-role="page" id="pageone">
+  <div data-role="header">
+  <h1>Welcome To My Homepage</h1>
   </div>
 
-<div id="con_correct">
-  <div class="toggler">
-       <div id="effect2" class="ui-corner-bl2">
-          <img class="ui-corner-bl" src="img/1-2.png" width="500px;">
-       </div>
-  </div>
-</div>
+  <div data-role="main" class="ui-content" style="padding-top: 0px;">
+        <div style="text-align: center;"><img id="board" src="img/animal1.png" width="90%" ></div>
+<div id="d1"  style="background:#10bf21;height:100px;width:100px;position:fixed;left:250px;"></div>
+<div id="d2" style="background:#98bf21;height:100px;width:100px;position:fixed;left:0px;display:none;"></div>
+<div id="d3" style="background:#981010;height:100px;width:100px;position:fixed;left:0px;display:none;"></div>
 
 
+<button>Start Animation</button>
 
+<p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
 
-    <div class="row">
-        <div class="col-md-12 col-xs-12">
-
-	       	    <div class="headtext"> 
-	  	   	          <p>How many bananas are on the frames?</p>
-	  	        </div> 
-        </div>      
-    </div>           
-
-<!-- ////////////////////////////////////////// -->
-
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-      <div class="backgrondpc">
-      	   <img src="img/animal1.png" width="100%" >
+  <div class="ui-grid-c">
+      <div class="ui-block-a">
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">First Column Button</a><br>
       </div>
+      <div class="ui-block-b">
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
       </div>
-    </div>  
-     
- 
-   
-  <!--  ///////////////////////right & wrong kids//////////////////////////    -->
-<!--   <div id="con_correct">
-    <div class="toggler">
-       <div id="effect" class="ui-corner-bl">
-          <img class="ui-corner-bl" src="img/1-1.png" width="500px;">
-        </div>
-     </div>
+      <div class="ui-block-c">
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
+      </div>
+      <div class="ui-block-d">
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
+      </div>
+    </div>
   </div>
 
-<div id="con_correct">
-  <div class="toggler">
-       <div id="effect2" class="ui-corner-bl2">
-          <img class="ui-corner-bl" src="img/1-2.png" width="500px;">
-       </div>
+  <div data-role="footer">
+  <h1>Next</h1>
   </div>
-</div> -->
-<!--   <section name="effect" id="effectTypes">
-    <option value="drop">drop</option>
-  </section> -->
-<!-- <div class="leftkid">
-      	   <img src="img/1-1.png" style="float: left; margin-top: -500px;" width="500px">
-      </div>
-<div class="rightkid">
-      	   <img src="img/1-2.png" style="float: right; margin-top: -500px" width="500px">
-      </div>
- -->
-<!-- ///////////////////////////// -->
- <!--    
- <div class="container">   -->  
-      <div class="row buttongroup">
+</div> 
 
-      	 <div class="col-md-3 col-xs-3">
-      	      <div class="button1">
-      	      	<button id="btn1" type="button" class="btn btn-primary btn-lg btn-block">15</button>
-      	      </div>
-      	 </div>     
-
-      	
-      	  <div class="col-md-3 col-xs-3">
-      	      <div class="button2">
-      	         <button id="btn2" type="button" class="btn btn-primary btn-lg btn-block">10</button>
-      	      </div>     
-      	 </div>
-
-
-      	  <div class="col-md-3 col-xs-3">
-      	  <div class="button3">
-      	  <button id="btn13" type="button" class="btn btn-primary btn-lg btn-block">12</button>
-      	  </div>
-      	  </div>
-      	      	
-      	  
-      	
-      	  <div class="col-md-3 col-xs-3">
-      	      <div class="button4">
-      	      	<button id="btn4" type="button" class="btn btn-primary btn-lg btn-block">12</button>
-      	      </div>
-      	 </div>
-      </div>
-<!-- </div>  -->     
-    
-  <!--  ///////////////////////bar//////////////////////////    -->
- <!-- <div class="container"> -->
-   <div class="row nextbt">
-     <div class="col-md-12 col-xs-12">
-        <div class="stepbu">
-            <a href="gamepage3.html">
-              <button type="button" class="btn btn-success btn-lg btn-block">next step</button>
-            </a>
-        </div>    
-     </div>
-   </div>
-<!--  </div> -->
-
-</div>  
 </body>
-<!-- ///////////////////////////////////////////////js///////////////////////////////////// -->
-
-<script >
-
-  $( function() {
-    // run the currently selected effect
-    function runEffect() {
-      // get effect type from
-      //var selectedEffect = $( "#effectTypes" ).val();
-      var selectedEffect = "drop";
- 
-      // Most effect types need no options passed by default
-      var options = {};
-      // some effects have required parameters
-      if ( selectedEffect === "scale" ) {
-        options = { percent: 50 };
-      } else if ( selectedEffect === "size" ) {
-        options = { to: { width: 2080, height: 585 } };
-      }
- 
-      // Run the effect
-      $(".backgrondpc").css("opacity", ".4");
-      $( "#effect" ).show( selectedEffect, options, 500, callback );
-    };
- 
-    //callback function to bring a hidden box back
-    function callback() {
-      setTimeout(function() {
-        $( "#effect:visible" ).removeAttr( "style" ).fadeOut();
-        $(".backgrondpc").css("opacity", "1");
-      }, 1000 );
-      // $(".backgrondpc").css("opacity", "1");
-    };
- 
-    // Set effect from select menu value
-    $( "#btn13" ).on( "click", function() {
-      runEffect();
-    });
-    $( "#effect" ).hide();
-  } );
-
-
-
-  $( function() {
-    // run the currently selected effect
-    function runEffect() {
-      // get effect type from
-      //var selectedEffect = $( "#effectTypes" ).val();
-      var selectedEffect = "drop";
- 
-      // Most effect types need no options passed by default
-      var options = {};
-      // some effects have required parameters
-      
-      // Run the effect
-      $(".backgrondpc").css("opacity", ".4");
-      $( "#effect2" ).show( selectedEffect, options, 500, callback );
-    };
- 
-    //callback function to bring a hidden box back
-    function callback() {
-      setTimeout(function() {
-        $( "#effect2:visible" ).removeAttr( "style" ).fadeOut();
-        $(".backgrondpc").css("opacity", "1");
-      }, 1000);
-      // $(".backgrondpc").css("opacity", "1");
-    };
- 
-    // Set effect from select menu value
-    $( "#btn1,#btn2,#btn4" ).on( "click", function() {
-      runEffect();
-    });
- 
-    $( "#effect2" ).hide();
-  } );
-
-
- // $( function() {
- //    // run the currently selected effect
- //    function runEffect() {
- //      // get effect type from
- //      var selectedEffect = "fade"
- 
- //      // Most effect types need no options passed by default
- //      var options = {};
- //      // some effects have required parameters
- //      if ( selectedEffect === "scale" ) {
- //        options = { percent: 50 };
- //      } else if ( selectedEffect === "size" ) {
- //        options = { to: { width: 200, height: 60 } };
- //      }
- 
- //      // Run the effect
- //      // $( ".backgrondpc" ).hide( selectedEffect, options, 500, callback );
- //    };
- 
- //    // Callback function to bring a hidden box back
- //    function callback() {
- //      setTimeout(function() {
- //        $( ".backgrondpc" ).removeAttr( "style" ).hide().fadeIn();
- //      }, 1000 );
- //    };
- 
- //    // Set effect from select menu value
- //    $( "#btn1,#btn2,#btn4,#btn13" ).on( "click", function() {
- //      runEffect();
- //    });
- //  } );
-////////////////////////////////////////////////
-
-
-
-</script>
-
-
-
-
-
-</html>
