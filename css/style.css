@@ -12,7 +12,7 @@ p{
 	margin-top: 15px;
 }
 .backgrondpc{
-	position:absolute;
+	position:relative;
 	top:-10px;
 	
 	z-index: -200;
@@ -21,19 +21,41 @@ p{
 
 .headtext{
 	position: absolute;
-	top: 20px;
 	margin-left: 150px;
 }
+.buttongroup{position: relative;
+margin-top: -5px;}
 
-.button1,.button2, .button3, .button4{
-	position: fixed;
-    top: 800px;
+/*.button1,.button2, .button3, .button4{
+	position: relative;
+    top: -10px;
 
-}s
-#effect{margin-top:100px;
+}*/
+#effect{margin-top:10px;
 	margin-left: 200px;
+position: relative;
+z-index: 200;}
+
+.toggler{
+	margin-top: 200px;
 position: absolute;
-z-index: 100;}
+/*top: 50;
+left: 0;*/
+/*z-index: -199;*/
+
+}
+
+#con_correct{
+	position:relative;
+	margin-top: 10px;
+    
+}
+.nextbt{
+	position: relative;
+	margin-top: 10px;
+	z-index: 300;
+}
+
 
 @media only screen and (max-width: 500px){
 	
@@ -48,10 +70,25 @@ p{font-size: 5px;margin-top: -5px;}
 	
 	margin-left: 80px;
 }
-/*#effect{
+#effect{
 position: absolute;
 margin-top:0px;
 
 z-index: 2
-}*/
 }
+}
+/*////////////////////page2//////////*/
+.startbu{
+	z-index: 200;
+	margin-top: -500px;
+	margin-left: 500px;
+	padding-top: 30px;
+
+}
+
+.backgrondpc2{
+	z-index: 201;
+}
+
+
+
