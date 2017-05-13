@@ -14,33 +14,37 @@
 <script> 
 $(document).ready(function(){
     var ds = ["#d1", "#d2", "#d3"];
-    var top1 = $("#board").position().top;
-    var left1 = $("#board").position().left;
-    $.each(ds, function( index, value ) {
-        $(ds[index]).css({ top: top1, left:-100  });
-    });
-
+    change_fruit(ds);
     var i = 0;
-    $("button").click(function(){
+    $("#next_btn").click(function(){
         $(ds[i]).fadeOut('fast').animate({
             'left': '100%'
             }, {duration: 'slow', queue: false}, function() {
             // Animation complete.
         });
-        $(ds[i+1]).show().animate({ left:left1 }, 
-                                  {duration: 800, easing: 'easeOutBounce'});
-        i++;
+        if (i == ds.length - 1) {
+            i = 0;
+        } else {
+            i++;
+        }
+        $(ds[i]).css({ left:-200 });
+        var left1 = $("#board").position().left;
+        $(ds[i]).show().animate({ left:left1 }, {duration: 1200, easing: 'easeOutBounce'});
     });
-
-    $(document).on("scrollstop",function(){
-        var top2 = $("#board").position().top;
-        alert("Stopped scrolling!" + top2);
-        $.each(ds, function( index, value ) {
-            $(ds[index]).css({ top: top2, left:-100  });
-        });
-
+    $(window).on('resize', function(event){
+        change_fruit(ds);
     });
 });
+
+function change_fruit(ds) {
+    var top1 = $("#board").position().top;
+    var left1 = $("#board").position().left;
+    var width1 = $("#board").width();
+    var height1 = $("#board").height();
+    $.each(ds, function( index, value ) {
+        $(ds[index]).css({ top: top1, left:left1, width:width1, height:height1});
+    });
+}
 </script> 
 
 </head>
@@ -52,34 +56,35 @@ $(document).ready(function(){
   </div>
 
   <div data-role="main" class="ui-content" style="padding-top: 0px;">
-        <div style="text-align: center;"><img id="board" src="img/animal1.png" width="90%" ></div>
-<div id="d1"  style="background:#10bf21;height:100px;width:100px;position:fixed;left:250px;"></div>
-<div id="d2" style="background:#98bf21;height:100px;width:100px;position:fixed;left:0px;display:none;"></div>
-<div id="d3" style="background:#981010;height:100px;width:100px;position:fixed;left:0px;display:none;"></div>
+    <div style="text-align: center;"><img id="board" src="img/board.png" width="90%" ></div>
+    <div id="d1"  style="position:absolute;"><img src="img/fruit1.png" width="100%" ></div>
+    <div id="d2"  style="position:absolute;display:none;"><img src="img/fruit2.png" width="100%" ></div>
+    <div id="d3"  style="position:absolute;display:none;"><img src="img/fruit3.png" width="100%" ></div>
 
 
-<button>Start Animation</button>
-
-<p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
-
-  <div class="ui-grid-c">
+    <div class="ui-grid-c">
       <div class="ui-block-a">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">First Column Button</a><br>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">11</a><br>
       </div>
       <div class="ui-block-b">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">12</a><br>
       </div>
       <div class="ui-block-c">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">13</a><br>
       </div>
       <div class="ui-block-d">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow">14</a><br>
       </div>
     </div>
+
+    <div class="ui-grid-solo">
+        <div class="ui-block-a"><a id="next_btn" href="#" class="ui-btn ui-corner-all ui-shadow">Next</a></div>
+    </div>
+
   </div>
 
   <div data-role="footer">
-  <h1>Next</h1>
+    <h1> Good Job! </h1>
   </div>
 </div> 
 
