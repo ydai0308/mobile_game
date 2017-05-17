@@ -12,38 +12,87 @@
   <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script></script>
 
 <script> 
+var barod_left;
+var board_right;
+
 $(document).ready(function(){
     var ds = ["#d1", "#d2", "#d3"];
-    change_fruit(ds);
     var i = 0;
-    $("#next_btn").click(function(){
-        $(ds[i]).fadeOut('fast').animate({
-            'left': '100%'
-            }, {duration: 'slow', queue: false}, function() {
-            // Animation complete.
-        });
+    $("#next_btn").click(function() {
+        next_problem(ds, i);
         if (i == ds.length - 1) {
             i = 0;
         } else {
             i++;
         }
-        $(ds[i]).css({ left:-200 });
-        var left1 = $("#board").position().left;
-        $(ds[i]).show().animate({ left:left1 }, {duration: 1200, easing: 'easeOutBounce'});
     });
+
+    $("#btn1").click(leftkid_fadein);
+    $("#btn4").click(function() {
+        var board_width = $("#board").width();
+        rightkid_fadein(board_left + board_width/2);
+    });
+
     $(window).on('resize', function(event){
-        change_fruit(ds);
+        board_left = $("#board").position().left;
+        board_right = $("#board").position().right;
+        change_fruit(ds, board_left);
     });
+    board_left = $("#board").position().left;
+    board_right = $("#board").position().right;
+    change_fruit(ds, board_left);
+
 });
 
-function change_fruit(ds) {
-    var top1 = $("#board").position().top;
-    var left1 = $("#board").position().left;
-    var width1 = $("#board").width();
-    var height1 = $("#board").height();
+function change_fruit(ds, board_left) {
+    var board_top = $("#board").position().top;
+    var board_width = $("#board").width();
+    var board_height = $("#board").height();
     $.each(ds, function( index, value ) {
-        $(ds[index]).css({ top: top1, left:left1, width:width1, height:height1});
+        $(ds[index]).css({ top: board_top, left:board_left, width:board_width, height:board_height});
     });
+    $("#leftkid").css({ top: board_top, left:board_left, width:board_width/2, height:board_height});
+    $("#rightkid").css({ top: board_top, left: board_left + board_width/2 ,width:board_width/2, height:board_height});
+}
+
+function leftkid_fadein() {
+    $(".background").css("opacity", ".4");
+    var cur = $("#leftkid").position().left; //current left
+    $("#leftkid").css({ left: cur - 200 });
+    $("#leftkid").show().animate({ left:cur }, {duration: 1000, easing: 'easeOutElastic'});
+    //run after a while
+    setTimeout(function() {
+        $( "#leftkid" ).fadeOut();
+        $(".background").css("opacity", "1");
+    }, 2000 );
+}
+
+function rightkid_fadein(kid_left) {
+    $(".background").css("opacity", ".4");
+    $("#rightkid").css({ left: kid_left + 200 });
+    $("#rightkid").hide().show().animate({left: kid_left}, {duration: 1000, easing: 'easeOutElastic'});
+    //run after a while
+    setTimeout(function() {
+        $( "#rightkid" ).fadeOut();
+        $(".background").css("opacity", "1");
+    }, 2000 );
+}
+
+function next_problem(ds, i){
+    $(ds[i]).fadeOut('fast').animate({
+        'left': '100%'
+        }, {duration: 'slow', queue: false}, function() {
+        // Animation complete.
+    });
+
+    if (i == ds.length - 1) {
+        i = 0;
+    } else {
+        i++;
+    }
+
+    $(ds[i]).css({ left:-200 });
+    $(ds[i]).show().animate({ left:board_left }, {duration: 1200, easing: 'easeOutBounce'});
 }
 </script> 
 
@@ -56,24 +105,26 @@ function change_fruit(ds) {
   </div>
 
   <div data-role="main" class="ui-content" style="padding-top: 0px;">
-    <div style="text-align: center;"><img id="board" src="img/board.png" width="90%" ></div>
-    <div id="d1"  style="position:absolute;"><img src="img/fruit1.png" width="100%" ></div>
-    <div id="d2"  style="position:absolute;display:none;"><img src="img/fruit2.png" width="100%" ></div>
-    <div id="d3"  style="position:absolute;display:none;"><img src="img/fruit3.png" width="100%" ></div>
+    <div class="background" style="text-align: center;"><img id="board" src="img/board.png" width="90%" ></div>
+    <div id="d1"  class="background" style="position:absolute;"><img src="img/fruit1.png" width="100%" ></div>
+    <div id="d2"  class="background" style="position:absolute;display:none;"><img src="img/fruit2.png" width="100%" ></div>
+    <div id="d3"  class="background" style="position:absolute;display:none;"><img src="img/fruit3.png" width="100%" ></div>
 
+    <div id="leftkid" style="position:absolute;display:none;"><img src="img/1-1.png"  width="100%"></div>
+    <div id="rightkid" style="position:absolute;display:none;"><img src="img/1-2.png"  width="100%"></div>
 
     <div class="ui-grid-c">
       <div class="ui-block-a">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">11</a><br>
+        <a href="#" id="btn1" class="ui-btn ui-corner-all ui-shadow">11</a><br>
       </div>
       <div class="ui-block-b">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">12</a><br>
+        <a href="#" id="btn2" class="ui-btn ui-corner-all ui-shadow">12</a><br>
       </div>
       <div class="ui-block-c">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">13</a><br>
+        <a href="#" id="btn3" class="ui-btn ui-corner-all ui-shadow">13</a><br>
       </div>
       <div class="ui-block-d">
-        <a href="#" class="ui-btn ui-corner-all ui-shadow">14</a><br>
+        <a href="#" id="btn4" class="ui-btn ui-corner-all ui-shadow">14</a><br>
       </div>
     </div>
 
