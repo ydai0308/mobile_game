@@ -1,94 +1,88 @@
-
 body{
-	background-color:#F8F8F8;
-	
+	background-color: #009999;
+font-family: 'Roboto', sans-serif;
+color: orange;
+font-weight: bold;
 }
-p{
-	font-family: "Comic Sans MS", cursive, sans-serif;
-	font-size: 40px;
-	color:#FF6347;
+.frame {
+	max-width:85vw;
+	margin-left: 5%;
+
 }
-.btngroup{
-	margin-top: 15px;
-}
-.backgrondpc{
-	position:relative;
-	top:-10px;
-	
-	z-index: -200;
-	
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
 }
 
-.headtext{
-	position: absolute;
-	margin-left: 150px;
-}
-.buttongroup{position: relative;
-margin-top: -5px;}
-
-/*.button1,.button2, .button3, .button4{
+.action-button
+{
 	position: relative;
-    top: -10px;
-
-}*/
-#effect{margin-top:10px;
-	margin-left: 200px;
-position: relative;
-z-index: 200;}
-
-.toggler{
-	margin-top: 200px;
-position: absolute;
-/*top: 50;
-left: 0;*/
-/*z-index: -199;*/
-
+	padding: 5px 20px;
+  margin: -30px 30px 0px 0px;
+  float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;	
 }
 
-#con_correct{
-	position:relative;
-	margin-top: 10px;
-    
-}
-.nextbt{
-	position: relative;
-	margin-top: 10px;
-	z-index: 300;
+.blue
+{
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	text-shadow: 0px -2px #2980B9;
 }
 
+.red
+{
+	background-color: #E74C3C;
+	border-bottom: 5px solid #BD3E31;
+	text-shadow: 0px -2px #BD3E31;
+}
+
+.green
+{
+	background-color: #82BF56;
+	border-bottom: 5px solid #669644;
+	text-shadow: 0px -2px #669644;
+}
+
+.yellow
+{
+	background-color: #F2CF66;
+	border-bottom: 5px solid #D1B358;
+	text-shadow: 0px -2px #D1B358;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+.btn{
+	margin-top: -50px;
+	margin-left: 80px;
+}
 
 @media only screen and (max-width: 500px){
-	
-body{background-color:#F8F8F8;}
-.button1,.button2, .button3, .button4{
+
+/*.button1,.button2, .button3, .button4 {
 	position: absolute;
     margin-top: -550px;
 }
-p{font-size: 5px;margin-top: -5px;}
+
 .headtext{
-	position: absolute;
-	
+	position: absolute;	
 	margin-left: 80px;
-}
+}*/
+
 #effect{
-position: absolute;
-margin-top:0px;
-
-z-index: 2
+	position: absolute;
+	margin-top:0px;
+	z-index: 2;
+	}
 }
-}
-/*////////////////////page2//////////*/
-.startbu{
-	z-index: 200;
-	margin-top: -500px;
-	margin-left: 500px;
-	padding-top: 30px;
-
-}
-
-.backgrondpc2{
-	z-index: 201;
-}
-
-
 
